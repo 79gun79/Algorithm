@@ -5,14 +5,13 @@ import math
 n = int(input())
 a = list(map(int, input().split()))
 a.sort()
-mdx = (n+1) // 2
-a = a[:mdx]
-
+idx = (n+1) // 2
+a = a[:idx]
 
 cnt = 0
 for i in a:
-    i = math.log(i, 2)
-    cnt += int(i)
+    j = math.log(i, 2)
+    cnt += int(j)
 
 cnt += 1
 print(cnt)
