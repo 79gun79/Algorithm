@@ -8,10 +8,10 @@ for _ in range(n):
     std.append([d, t])
 
 std.sort(key=lambda x:x[1],reverse=True)
-tmp = std[0][1]
+res = 1000000000
 for i in range(len(std)):
-    if std[i][1] > tmp:
-        std[i][1] = tmp
-    tmp = std[i][1]-std[i][0]
+    if std[i][1] > res:
+        std[i][1] = res
+    res = std[i][1]-std[i][0]
 
-print(tmp)
+print(res)
