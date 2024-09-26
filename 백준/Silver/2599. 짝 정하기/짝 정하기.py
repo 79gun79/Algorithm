@@ -5,18 +5,18 @@ n = int(input())
 st = [list(map(int, input().split())) for _ in range(3)]
 
 for i in range(st[0][0] + 1):
-    A = i
-    a = st[0][0] - A
-    B = n - st[2][0] - st[2][1] - A
-    b = st[1][0] - B
-    C = st[0][1] - B
-    c = st[2][0] - C
+    Ab = i
+    Ac = st[0][0] - Ab
+    Ba = n - st[2][0] - st[2][1] - Ab
+    Bc = st[1][0] - Ba
+    Ca = st[0][1] - Ba
+    Cb = st[2][0] - Ca
 
-    if A >= 0 and B >= 0 and C >= 0 and a >= 0 and b >= 0 and c >= 0:
+    if Ab >= 0 and Ac >= 0 and Ba >= 0 and Bc >= 0 and Ca >= 0 and Cb >= 0:
         print(1)
-        print(A, a)
-        print(B, b)
-        print(C, c)
+        print(Ab, Ac)
+        print(Ba, Bc)
+        print(Ca, Cb)
         quit()
 
 print(0)
