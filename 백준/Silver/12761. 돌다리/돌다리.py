@@ -3,29 +3,23 @@ input = sys.stdin.readline
 from collections import deque
 
 a, b, n, m = map(int, input().split())
-def Now_X(x):
-    nx = [x-1, x+1, x-a, x-b, x+a, x+b, x*a, x*b]
-    return nx
 
 q = deque()
 visited = [0] * (100001)
+
 def BFS():
-    flag = False
     q.append(n)
     visited[n] = 1
-
     while q:
-        xi = q.popleft()
+        x = q.popleft()
+        dx = [x + 1, x - 1, x + a, x - a, x + b, x - b, x * a, x * b]
         for i in range(8):
-            c = Now_X(xi)[i]
-            if 0 <= c <= 100000 and not visited[c]:
-                visited[c] = visited[xi] + 1
-                q.append(c)
-            if c == m:
-                flag = True
-                break
-        if flag:
-            break
-    print(max(visited)-1)
+            y = dx[i]
+            if 0 <= y <= 100000 and not visited[y]:
+                visited[y] = visited[x] + 1
+                q.append(y)
+            if y == m:
+                return
 
 BFS()
+print(max(visited) - 1)
