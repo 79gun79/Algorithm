@@ -1,33 +1,35 @@
 import sys
 input = sys.stdin.readline
+
 n = int(input())
 num = [int(input()) for _ in range(n)]
 
-minus = []
-plus = []
-res = 0
+def mod_num(lst):
+    minus = []
+    plus = []
+    res = 0
+    for i in lst:
+        if i <= 0:
+            minus.append(i)
+        elif i == 1:
+            res += 1
+        else:
+            plus.append(i)
 
-for i in num:
-    if i <= 0:
-        minus.append(i)
-    elif i == 1:
-        res += 1
-    else:
-        plus.append(i)
+    plus.sort(reverse=True)
+    minus.sort()
+    for p in range(0, len(plus), 2):
+        if p+1 >= len(plus):
+            res += plus[p]
+        else:
+            res += plus[p] * plus[p+1]
 
-plus.sort(reverse=True)
-minus.sort()
+    for m in range(0, len(minus), 2):
+        if m+1 >= len(minus):
+            res += minus[m]
+        else:
+            res += minus[m] * minus[m+1]
 
-for j in range(0, len(plus), 2):
-    if j+1 >= len(plus):
-        res += plus[j]
-    else:
-        res += plus[j] * plus[j+1]
+    return res
 
-for k in range(0, len(minus), 2):
-    if k+1 >= len(minus):
-        res += minus[k]
-    else:
-        res += minus[k] * minus[k+1]
-
-print(res)
+print(mod_num(num))
