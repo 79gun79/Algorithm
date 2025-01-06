@@ -1,25 +1,25 @@
 import sys
+input = sys.stdin.readline
 from collections import deque
-inp = sys.stdin.readline
-n = int(inp())
 
-st = deque()
+n = int(input())
+q = deque()
+
 op = []
-index = 1
-
+i = 1
 for _ in range(n):
-    num = int(inp())
-    while index <= num:
-        st.append(index)
+    num = int(input())
+    while i <= num:
+        q.append(i)
         op.append('+')
-        index += 1
+        i += 1
 
-    if st[-1] == num:
-        st.pop()
+    if num == q[-1]:
+        q.pop()
         op.append('-')
     else:
         print('NO')
         quit()
 
-for i in op:
-    print(i)
+for j in op:
+    print(j)
