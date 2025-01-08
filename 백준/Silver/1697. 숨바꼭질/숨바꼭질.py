@@ -2,19 +2,22 @@ import sys
 input = sys.stdin.readline
 from collections import deque
 
-n, k = map(int, input().split())
-w = [0] * 100001
-
-def BFS():
+def bfs(x):
     q = deque()
-    q.append(n)
+    q.append(x)
     while q:
-        x = q.popleft()
-        if x == k:
-            return w[x]
-        for i in (x-1, x+1, x*2):
-            if 0<=i<=100000 and not w[i]:
-                w[i] = w[x] + 1
+        a = q.popleft()
+        da = [a - 1, a + 1, 2 * a]
+        if a == k:
+            return visited[a]
+        for i in da:
+
+            if i < 0 or i >= 100001:
+                continue
+            if visited[i] == 0:
+                visited[i] = visited[a] + 1
                 q.append(i)
 
-print(BFS())
+n, k = map(int, input().split())
+visited = [0] * (100001)
+print(bfs(n))
