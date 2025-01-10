@@ -1,29 +1,28 @@
 import sys
 input = sys.stdin.readline
 
+def binary_search(lst):
+    l = 1
+    r = max(lst)
+    jealous = 0
+
+    while l <= r:
+        mid = (l + r) // 2
+        cnt = 0
+        for i in jewel:
+            cnt += i // mid
+            if i % mid != 0:
+                cnt += 1
+
+        if cnt <= n:
+            r = mid - 1
+            jealous = mid
+        else:
+            l = mid + 1
+
+
+    return jealous
+
 n, m = map(int, input().split())
-jewel = []
-jealous = 0
-
-for _ in range(m):
-    jewel.append(int(input()))
-
-l = 1
-r = max(jewel)
-
-while l <= r:
-    m = (l+r) // 2
-    sum = 0
-    for i in jewel:
-        sum += (i // m)
-        if (i % m) != 0:
-            sum += 1
-
-    if sum > n:
-        l = m + 1
-
-    else:
-        r = m - 1
-        jealous = m
-
-print(jealous)
+jewel = [int(input()) for _ in range(m)]
+print(binary_search(jewel))
