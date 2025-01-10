@@ -2,30 +2,26 @@ import sys
 input = sys.stdin.readline
 
 def next_word(word, n):
-    a = -1
-    b = -1
-
+    ch_st = -1
+    ch_ed = -1
     for i in range(1, n):
         if word[i-1] < word[i]:
-            a = i-1
-
-    if a == -1:
+            ch_st = i-1
+    if ch_st == -1:
         return word
 
-    for j in range(n-1, a, -1):
-        if word[a] < word[j]:
-            b = j
+    for j in range(n-1, ch_st, -1):
+        if word[ch_st] < word[j]:
+            ch_ed = j
             break
 
-
-    word[a], word[b] = word[b], word[a]
-    tmp = word[:a+1]
-    emp = sorted(reversed(word[a+1:]))
-    tmp += emp
-
-    return tmp
+    word[ch_st], word[ch_ed] = word[ch_ed], word[ch_st]
+    chg = sorted(word[ch_st+1:])
+    res = word[:ch_st+1] + chg
+    return res
 
 t = int(input())
 for _ in range(t):
-    s = list(input().rstrip())
-    print("".join(next_word(s, len(s))))
+    w = list(input().rstrip())
+    l = len(w)
+    print("".join(next_word(w, l)))
