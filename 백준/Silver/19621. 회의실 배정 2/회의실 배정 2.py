@@ -4,7 +4,6 @@ input = sys.stdin.readline
 n = int(input())
 met = [list(map(int, input().split())) for _ in range(n)]
 dp = [0] * n
-met.sort()
 
 dp[0] = met[0][2]
 
