@@ -6,7 +6,7 @@ function solution(phone_book) {
         map[key] = 1;
     }
     for (let key of phone_book) {
-        for (let i = 0; i < key.length; i++) {
+        for (let i = 1; i < key.length; i++) {
             let prefix = key.slice(0, i);
             if (prefix in map) {
                 return false;
