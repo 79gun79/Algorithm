@@ -1,20 +1,13 @@
 function solution(array, commands) { 
-    var answer = [];
-
-    for (let x = 0; x < commands.length; x++ ) {
-        let i, j, k = 0;
-        i = commands[x][0] - 1;
-        j = commands[x][1] - 1;
-        k = commands[x][2] - 1;
+    const res = [];
+    commands.forEach((v) => {
+        let i = v[0];
+        let j = v[1];
+        let k = v[2];
+        const sliceArr = array.slice(i-1, j);
         
-        var tmp = [];
-        for (let y=i; y <=j; y++) {
-            tmp.push(array[y]);
-        }
-        
-        tmp.sort((a, b) => a-b)
-        answer.push(tmp[k]);
-    }
-
-    return answer;
+        sliceArr.sort((a, b) => a - b);
+        res.push(sliceArr[k-1]);
+    })
+    return res
 }
