@@ -10,6 +10,5 @@ function solution(s){
             else { st.pop()}
         }
     }
-    if (st.length > 0) return false;
-    else return true;
+    return st.length === 0 ? true : false
 }
