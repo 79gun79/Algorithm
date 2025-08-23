@@ -55,4 +55,3 @@ temp_mp = [[0 for _ in range(m)] for _ in range(n)]
 res = 0
 new_wall(0)
 print(res)
-
